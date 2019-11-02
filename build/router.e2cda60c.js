@@ -35030,11 +35030,24 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+<<<<<<< HEAD
+      var videoConstraints = {
+        facingMode: "environment"
+      };
+      return _react.default.createElement("div", {
+        className: "hello-world"
+      }, _react.default.createElement("h1", null, "Hello World"), _react.default.createElement("p", null, "Welcome to my world"), _react.default.createElement(_reactWebcam.default, {
+        onClick: this.capture,
+        ref: this.setWebcam,
+        screenshotFormat: "image/jpeg",
+        videoConstraints: videoConstraints
+=======
       return _react.default.createElement("div", {
         className: "hello-world"
       }, _react.default.createElement("h1", null, "Hello World"), _react.default.createElement("p", null, "Welcome to my world"), _react.default.createElement(_reactWebcam.default, {
         ref: this.setWebcam,
         screenshotFormat: "image/jpeg"
+>>>>>>> 5350396b8e15647463287d17c9f136ea121ed29a
       }), _react.default.createElement("button", {
         onClick: this.capture
       }, "Capture photo"), _react.default.createElement(_reactJsonPretty.default, {
