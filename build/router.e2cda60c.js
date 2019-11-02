@@ -47165,13 +47165,13 @@ function (_React$Component) {
     value: function capture() {
       var _this2 = this;
 
-      console.log(this.state.webcam.getScreenshot());
-
       _axios.default.post("/images/base64", {
         image: this.state.webcam.getScreenshot()
       }).then(function (response) {
         _this2.setState({
           data: response.data
+        }, function () {
+          _this2.recommendation();
         });
       }).catch(function (error) {
         console.log(error);
@@ -47186,13 +47186,32 @@ function (_React$Component) {
     }
   }, {
     key: "recommendation",
-    value: function recommendation() {// const flows = {
-      //   glass: tagFinder('glass', 'bottle', 'jar', 'wine', 'wine bottle', 'mason jar'),
-      //   plastic: tagFinder('water bottle', 'plastic bottle', 'plastic', 'bottled water'),
-      //   organic: tagFinder('fruit', 'peel', 'banana', 'vegetable', 'natural food', 'apple', 'produce'),
-      //   paper: tagFinder('newspaper', 'handwriting'),
-      //   metal: tagFinder('tin', 'can', 'aluminum', 'tin', 'aluminum can', 'beverage can')
-      // }
+    value: function recommendation() {
+      var _this3 = this;
+
+      var tagFinder = function tagFinder() {
+        var azureTags = _this3.state.data.tags.map(function (tag) {
+          return tag.name;
+        });
+
+        for (var _len = arguments.length, tags = new Array(_len), _key = 0; _key < _len; _key++) {
+          tags[_key] = arguments[_key];
+        }
+
+        return tags.filter(function (tag) {
+          return azureTags.includes(tag);
+        });
+      };
+
+      this.setState({
+        recycle: {
+          glass: tagFinder("jar", "wine", "wine bottle", "mason jar"),
+          plastic: tagFinder("water bottle", "plastic bottle", "plastic", "bottled water"),
+          organic: tagFinder("fruit", "peel", "banana", "vegetable", "natural food", "apple", "produce"),
+          paper: tagFinder("newspaper", "handwriting"),
+          metal: tagFinder("tin", "can", "aluminum", "tin", "tin can", "aluminum can", "beverage can")
+        }
+      });
     }
   }, {
     key: "render",
@@ -47200,7 +47219,9 @@ function (_React$Component) {
       var videoConstraints = {
         facingMode: "environment"
       };
-      return _react.default.createElement("div", null, _react.default.createElement(Container, null, _react.default.createElement(Row, null, _react.default.createElement(Col, null, "1 of 2"), _react.default.createElement(Col, null, "2 of 2")), _react.default.createElement(Row, null, _react.default.createElement(Col, null, "1 of 3"), _react.default.createElement(Col, null, "2 of 3"), _react.default.createElement(Col, null, "3 of 3"))), _react.default.createElement(_reactWebcam.default, {
+      return _react.default.createElement("div", {
+        className: "hello-world"
+      }, _react.default.createElement(_reactWebcam.default, {
         onClick: this.capture,
         ref: this.setWebcam,
         screenshotFormat: "image/jpeg",
@@ -47211,7 +47232,10 @@ function (_React$Component) {
         onClick: this.capture
       }, "Hello World"), _react.default.createElement("button", {
         onClick: this.capture
-      }, "Capture photo"), _react.default.createElement(_reactJsonPretty.default, {
+      }, "Capture photo"), _react.default.createElement("h2", null, "Decision: "), _react.default.createElement(_reactJsonPretty.default, {
+        id: "json-pretty",
+        data: this.state.recycle
+      }), _react.default.createElement("h2", null, "Azure Output"), _react.default.createElement(_reactJsonPretty.default, {
         id: "json-pretty",
         data: this.state.data
       }));
