@@ -65,6 +65,7 @@
     "preact-router": "^2.6.1",
     "react": "^16.0.0",
     "react-dom": "^16.11.0",
+    "react-json-pretty": "^2.2.0",
     "react-router-dom": "^5.1.2",
     "react-webcam": "^4.0.0",
     "regenerator-runtime": "^0.13.3",
