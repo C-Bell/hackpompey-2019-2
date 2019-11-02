@@ -34996,10 +34996,19 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Home).call(this, props));
     _this.state = {
       webcam: false,
-      data: {}
+      data: {},
+      recycle: {
+        glass: false,
+        metal: false,
+        plastic: false,
+        organic: false,
+        paper: false,
+        domestic: false
+      }
     };
     _this.capture = _this.capture.bind(_assertThisInitialized(_this));
     _this.setWebcam = _this.setWebcam.bind(_assertThisInitialized(_this));
+    _this.recommendation = _this.recommendation.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -35028,9 +35037,19 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "recommendation",
+    value: function recommendation() {
+      var flows = {
+        glass: tagFinder('glass', 'bottle', 'jar', 'wine', 'wine bottle', 'mason jar'),
+        plastic: tagFinder('water bottle', 'plastic bottle', 'plastic', 'bottled water'),
+        organic: tagFinder('fruit', 'peel', 'banana', 'vegetable', 'natural food', 'apple', 'produce'),
+        paper: tagFinder('newspaper', 'handwriting'),
+        metal: tagFinder('tin', 'can', 'aluminum', 'tin', 'aluminum can', 'beverage can')
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-<<<<<<< HEAD
       var videoConstraints = {
         facingMode: "environment"
       };
@@ -35041,13 +35060,6 @@ function (_React$Component) {
         ref: this.setWebcam,
         screenshotFormat: "image/jpeg",
         videoConstraints: videoConstraints
-=======
-      return _react.default.createElement("div", {
-        className: "hello-world"
-      }, _react.default.createElement("h1", null, "Hello World"), _react.default.createElement("p", null, "Welcome to my world"), _react.default.createElement(_reactWebcam.default, {
-        ref: this.setWebcam,
-        screenshotFormat: "image/jpeg"
->>>>>>> 5350396b8e15647463287d17c9f136ea121ed29a
       }), _react.default.createElement("button", {
         onClick: this.capture
       }, "Capture photo"), _react.default.createElement(_reactJsonPretty.default, {

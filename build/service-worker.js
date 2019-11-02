@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/index.html","6b92f68964f2000233a447a76c129caa"],["/router.29ba262d.js","d50bb2fd134d84bb9c9cd6cfa38bb39a"],["/router.4a134928.js","5f5ba435ed85db58889c8e8679925681"],["/router.69507e38.js","dcc0862432647f2e90359677ff4b0ad1"],["/router.e2cda60c.js","8b50d37621f6a2a30b7c7e9e94b591eb"],["/service-worker.js","045361ee5c5a8d035a8aa82e4ebe421d"]];
+var precacheConfig = [["/index.html","421e2dda7351e522edc7a2bea18c1b59"],["/router.29ba262d.js","d50bb2fd134d84bb9c9cd6cfa38bb39a"],["/router.4a134928.js","5f5ba435ed85db58889c8e8679925681"],["/router.69507e38.js","dcc0862432647f2e90359677ff4b0ad1"],["/router.e2cda60c.js","7590be5068cd250347fbf859041a1000"],["/service-worker.js","5791e16aea94ebe8bc5ba5a734ac1ac9"]];
 var cacheName = 'sw-precache-v3-node-react-base-' + (self.registration ? self.registration.scope : '');
 
 
