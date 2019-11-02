@@ -35017,13 +35017,14 @@ function (_React$Component) {
     value: function capture() {
       var _this2 = this;
 
-      console.log(this.state.webcam.getScreenshot());
-
+      // console.log(this.state.webcam.getScreenshot());
       _axios.default.post("/images/base64", {
         image: this.state.webcam.getScreenshot()
       }).then(function (response) {
         _this2.setState({
           data: response.data
+        }, function () {
+          _this2.recommendation();
         });
       }).catch(function (error) {
         console.log(error);
@@ -35039,13 +35040,31 @@ function (_React$Component) {
   }, {
     key: "recommendation",
     value: function recommendation() {
-      var flows = {
-        glass: tagFinder('glass', 'bottle', 'jar', 'wine', 'wine bottle', 'mason jar'),
-        plastic: tagFinder('water bottle', 'plastic bottle', 'plastic', 'bottled water'),
-        organic: tagFinder('fruit', 'peel', 'banana', 'vegetable', 'natural food', 'apple', 'produce'),
-        paper: tagFinder('newspaper', 'handwriting'),
-        metal: tagFinder('tin', 'can', 'aluminum', 'tin', 'aluminum can', 'beverage can')
+      var _this3 = this;
+
+      var tagFinder = function tagFinder() {
+        var azureTags = _this3.state.data.tags.map(function (tag) {
+          return tag.name;
+        });
+
+        for (var _len = arguments.length, tags = new Array(_len), _key = 0; _key < _len; _key++) {
+          tags[_key] = arguments[_key];
+        }
+
+        return tags.filter(function (tag) {
+          return azureTags.includes(tag);
+        });
       };
+
+      this.setState({
+        recycle: {
+          glass: tagFinder("jar", "wine", "wine bottle", "mason jar"),
+          plastic: tagFinder("water bottle", "plastic bottle", "plastic", "bottled water"),
+          organic: tagFinder("fruit", "peel", "banana", "vegetable", "natural food", "apple", "produce"),
+          paper: tagFinder("newspaper", "handwriting"),
+          metal: tagFinder("tin", "can", "aluminum", "tin", "tin can", "aluminum can", "beverage can")
+        }
+      });
     }
   }, {
     key: "render",
@@ -35062,7 +35081,10 @@ function (_React$Component) {
         videoConstraints: videoConstraints
       }), _react.default.createElement("button", {
         onClick: this.capture
-      }, "Capture photo"), _react.default.createElement(_reactJsonPretty.default, {
+      }, "Capture photo"), _react.default.createElement("h2", null, "Decision: "), _react.default.createElement(_reactJsonPretty.default, {
+        id: "json-pretty",
+        data: this.state.recycle
+      }), _react.default.createElement("h2", null, "Azure Output"), _react.default.createElement(_reactJsonPretty.default, {
         id: "json-pretty",
         data: this.state.data
       }));
