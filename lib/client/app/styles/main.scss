@@ -2,8 +2,13 @@ html, body {
 	margin: 0;
 	background-color: rosybrown;
 }
+// .icons-gray {
+// 	position: absolute;
+// }
 .icons-clr {
 	opacity: 0.5;
+	position: absolute;
+	filter: grayscale();
 }
 .icons-clr img, .icons-gray img {
 	width: 15%;
