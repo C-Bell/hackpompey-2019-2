@@ -5,13 +5,13 @@ html, body {
 // .icons-gray {
 // 	position: absolute;
 // }
-.icons-clr .hidden {
+.hidden {
 	opacity: 0.5;
 	position: absolute;
 	filter: grayscale();
 }
 
-.icons-clr .show {
+.shown {
 	opacity: 1;
 	position: absolute;
 }
