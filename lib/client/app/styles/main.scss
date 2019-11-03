@@ -5,10 +5,15 @@ html, body {
 // .icons-gray {
 // 	position: absolute;
 // }
-.icons-clr {
+.icons-clr .hidden {
 	opacity: 0.5;
 	position: absolute;
 	filter: grayscale();
+}
+
+.icons-clr .show {
+	opacity: 1;
+	position: absolute;
 }
 .icons-clr img, .icons-gray img {
 	width: 15%;
