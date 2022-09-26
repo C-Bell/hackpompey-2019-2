@@ -38,7 +38,7 @@
     "parcel": "^1.12.3",
     "parcel-plugin-subresource-integrity": "^0.3.1",
     "parcel-plugin-sw-precache": "^1.1.1",
-    "pm2": "^3.5.1",
+    "pm2": "^5.2.0",
     "sass": "^1.22.5",
     "tslint": "^5.18.0",
     "tslint-config-airbnb": "^5.11.1",
